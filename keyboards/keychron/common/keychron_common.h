@@ -60,6 +60,7 @@ enum {
     BL_SPD,
 #endif
     NEW_SAFE_RANGE,
+    CUSTOM_STICKY_MOD_KEY
 };
 
 #ifndef LK_WIRELESS_ENABLE

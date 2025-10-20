@@ -33,12 +33,12 @@
 bool     is_siri_active = false;
 uint32_t siri_timer     = 0;
 
-static uint8_t mac_keycode[4] = {
-    KC_LOPT,
-    KC_ROPT,
-    KC_LCMD,
-    KC_RCMD,
-};
+// static uint8_t mac_keycode[4] = {
+//     KC_LOPT,
+//     KC_ROPT,
+//     KC_LCMD,
+//     KC_RCMD,
+// };
 
 // clang-format off
 static key_combination_t key_comb_list[] = {
@@ -88,16 +88,16 @@ bool process_record_keychron_common(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_MCTRL:
             if (record->event.pressed) {
-                register_code(KC_MISSION_CONTROL);
+                // register_code(KC_MISSION_CONTROL);
             } else {
-                unregister_code(KC_MISSION_CONTROL);
+                // unregister_code(KC_MISSION_CONTROL);
             }
             return false; // Skip all further processing of this key
         case KC_LNPAD:
             if (record->event.pressed) {
-                register_code(KC_LAUNCHPAD);
+                // register_code(KC_LAUNCHPAD);
             } else {
-                unregister_code(KC_LAUNCHPAD);
+                // unregister_code(KC_LAUNCHPAD);
             }
             return false; // Skip all further processing of this key
         case KC_LOPTN:
@@ -105,19 +105,19 @@ bool process_record_keychron_common(uint16_t keycode, keyrecord_t *record) {
         case KC_LCMMD:
         case KC_RCMMD:
             if (record->event.pressed) {
-                register_code(mac_keycode[keycode - KC_LOPTN]);
+                // register_code(mac_keycode[keycode - KC_LOPTN]);
             } else {
-                unregister_code(mac_keycode[keycode - KC_LOPTN]);
+                // unregister_code(mac_keycode[keycode - KC_LOPTN]);
             }
             return false; // Skip all further processing of this key
         case KC_SIRI:
             if (record->event.pressed) {
                 if (!is_siri_active) {
                     is_siri_active = true;
-                    register_code(KC_LCMD);
-                    register_code(KC_SPACE);
+                    // register_code(KC_LCMD);
+                    // register_code(KC_SPACE);
                 }
-                siri_timer = timer_read32();
+                // siri_timer = timer_read32();
             } else {
                 // Do something else when release
             }
@@ -134,20 +134,20 @@ bool process_record_keychron_common(uint16_t keycode, keyrecord_t *record) {
 #endif
             if (record->event.pressed) {
                 for (uint8_t i = 0; i < key_comb_list[keycode - KC_TASK].len; i++) {
-                    register_code(key_comb_list[keycode - KC_TASK].keycode[i]);
+                    // register_code(key_comb_list[keycode - KC_TASK].keycode[i]);
                 }
             } else {
                 for (uint8_t i = 0; i < key_comb_list[keycode - KC_TASK].len; i++) {
-                    unregister_code(key_comb_list[keycode - KC_TASK].keycode[i]);
+                    // unregister_code(key_comb_list[keycode - KC_TASK].keycode[i]);
                 }
             }
             return false; // Skip all further processing of this key
 #ifdef LED_MATRIX_ENABLE
         case BL_SPI:
-            led_matrix_increase_speed();
+            // led_matrix_increase_speed();
             break;
         case BL_SPD:
-            led_matrix_decrease_speed();
+            // led_matrix_decrease_speed();
             break;
 #endif
         default:

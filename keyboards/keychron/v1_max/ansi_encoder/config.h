@@ -16,6 +16,16 @@
 
 #pragma once
 
+#ifdef DYNAMIC_KEYMAP_ENABLE
+  #undef DYNAMIC_KEYMAP_ENABLE
+#endif
+#define DYNAMIC_KEYMAP_ENABLE
+#define DYNAMIC_KEYMAP_LAYER_COUNT 16
+
+#undef DYNAMIC_KEYMAP_MACRO_EEPROM_SIZE
+#define DYNAMIC_KEYMAP_MACRO_EEPROM_SIZE 0x100  // 256 bytes for macros
+
+
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
 #    define RGB_MATRIX_LED_COUNT 81

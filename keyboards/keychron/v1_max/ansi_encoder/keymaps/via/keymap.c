@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "process_sticky_combo.h"
+
 enum custom_keycodes {
     KC_STICKY_HOLDER = SAFE_RANGE
 };
@@ -143,5 +145,19 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     const bool keychron_common_result = process_record_keychron_common(keycode, record);
-    return keychron_common_result;
+    const bool sticky_combo_result = process_record_sticky_combo(keycode, record);
+    return keychron_common_result && sticky_combo_result;
 }
+
+const sticky_combo_rule_t user_defined_sticky_combos[] = { 
+    /*{            LAYER_NAME, STCKYKEY, TRIGGR, {EXTRAMODS}, XMODLEN}*/
+    { UNIVERSAL_EXTRA_LAYER_3,  KC_LCTL, KC_SPC, { KC_LALT }, 1 },
+    { UNIVERSAL_EXTRA_LAYER_3,  KC_LCTL, KC_SPC, { KC_LCMMD }, 1 },
+    { UNIVERSAL_EXTRA_LAYER_1,  KC_LCTL, KC_SPC, { }, 0 },
+    { UNIVERSAL_EXTRA_LAYER_2,  KC_LSFT, KC_SPC, { }, 0 },
+    { UNIVERSAL_EXTRA_LAYER_4,  KC_RSFT, KC_SPC, { }, 0 },
+};
+const uint8_t user_defined_sticky_combos_length = 5;
+
+const uint8_t user_defined_base_layers[] = { WIN_BASE, MAC_BASE };
+const uint8_t user_defined_base_layers_length = 2;

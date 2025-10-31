@@ -46,6 +46,8 @@ In my example I also performed the HHKB layout swap of remapping Caps Lock to Le
 ## But what about the existing QMK features?
 You could wire similar functionality with something like Tap Dance triggering a custom keycode to toggle a layer change, but to me this would be the equivalent of typing upper-case letters with Caps Lock over Shift (which some people prefer, but I personally don't).
 
+You could also trigger a layer change using the existing combo feature, but then you would need to unset the layer with another keydown. With sticky combo, you unset it on keyup. Again, it's like the difference between using Shift vs Caps Lock to type capitals.
+
 ##### Using underscores in an fn layer with a sticky release. "V" is my fn1 underscore key.
 ![](Assets/Write_Snake_Case.gif)
 
